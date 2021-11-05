@@ -1,2 +1,2 @@
 # NIC-Elimininados
-Muestra dominios eliminados la ultima semana de nic.cl.
+Utilidad Python, muestra dominios eliminados la ultima semana de nic.cl.
