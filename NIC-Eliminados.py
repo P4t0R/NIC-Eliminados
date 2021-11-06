@@ -1,28 +1,34 @@
 import pandas as pd
 import time
 import wget
-
 from os import remove
 
 
-#Elimina
-try: 
-    remove("Eliminados.txt")
-except:
-    pass
 
 
-#Descarga datos
+def erase ():
+    try: 
+        remove("Eliminados.txt")
+    except:
+        pass
+
+#Elimina txt
+erase()
+
+#Link descarga datos txt ultima semana nic.cl
 url= 'https://www.nic.cl/registry/Eliminados.do?t=1s&f=txt'
 
+
+#Descarga 'Eliminados.txt', contiene lista de dominios eliminados
 filename = wget.download(url, out='Eliminados.txt')
 
 
-#Datos
+#Leemos el archivo descargado 'Eliminados.txt'
 f = open("Eliminados.txt", "r",encoding='utf-8')
 dat1= f.readlines()
 
 
+#Visualizamos los datos
 while True:
     letras = int (input('\ningresa la cantidad de letras '))
     Dominios=[]
@@ -43,3 +49,6 @@ while True:
         print(f'{sum}.- \t{n}') 
         if len(len_3) > 10:
             time.sleep(0.5)
+
+#Elimina txt
+erase()
