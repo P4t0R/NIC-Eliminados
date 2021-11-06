@@ -1,36 +1,35 @@
 import pandas as pd
 import time
 import wget
-from os import remove
+import os
 
 
+#Eliminamos datos antiguos 'data.txt'
+if os.path.exists('data.txt'):
+    os.remove('data.txt')
 
-
-def erase ():
-    try: 
-        remove("Eliminados.txt")
-    except:
-        pass
-
-#Elimina txt
-erase()
 
 #Link descarga datos txt ultima semana nic.cl
 url= 'https://www.nic.cl/registry/Eliminados.do?t=1s&f=txt'
 
 
-#Descarga 'Eliminados.txt', contiene lista de dominios eliminados
-filename = wget.download(url, out='Eliminados.txt')
+#Descarga 'data.txt', contiene lista de dominios eliminados la última semana
+filename = wget.download(url, out='data.txt')
 
 
 #Leemos el archivo descargado 'Eliminados.txt'
-f = open("Eliminados.txt", "r",encoding='utf-8')
+f = open("data.txt", "r",encoding='utf-8')
 dat1= f.readlines()
 
 
 #Visualizamos los datos
 while True:
-    letras = int (input('\ningresa la cantidad de letras '))
+    try:
+        letras = int (input('\nIngrese longitud del dominio '))
+    except:
+        break
+
+
     Dominios=[]
     len_3 = []
 
@@ -50,5 +49,4 @@ while True:
         if len(len_3) > 10:
             time.sleep(0.5)
 
-#Elimina txt
-erase()
+print('\nEspero que haya encontrado su nuevo Dominio!')
